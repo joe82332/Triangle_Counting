@@ -1,0 +1,11 @@
+BASEDIR = ../..
+INCLUDEDIR = $(BASEDIR)/include
+LIBDIR = $(BASEDIR)/lib
+DATADIR = ../../data
+
+BASELIBS := $(LIBS:%=$(LIBDIR)/libcugl_%.a)
+LINKOPTS := -L$(LIBDIR) $(LIBS:%=-lcugl_%)
+
+$(BASELIBS):
+	cd $(BASEDIR) && make -j
+
